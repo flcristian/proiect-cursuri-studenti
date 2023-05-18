@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cursuri_studenti", "cursuri_studenti\cursuri_studenti.csproj", "{B4FE6536-51CF-4983-8963-291C724140DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{99FC359F-F1E9-4D41-BDDA-6B9EABAC2233}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests_cursuri_studenti", "tests_cursuri_studenti\tests_cursuri_studenti.csproj", "{15374AD1-379C-4991-B11D-EBFB3F30C929}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4FE6536-51CF-4983-8963-291C724140DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4FE6536-51CF-4983-8963-291C724140DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4FE6536-51CF-4983-8963-291C724140DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4FE6536-51CF-4983-8963-291C724140DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15374AD1-379C-4991-B11D-EBFB3F30C929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15374AD1-379C-4991-B11D-EBFB3F30C929}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15374AD1-379C-4991-B11D-EBFB3F30C929}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15374AD1-379C-4991-B11D-EBFB3F30C929}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {185C4A97-3585-4138-ACAF-48B91BCF7E7E}
+	EndGlobalSection
+EndGlobal
