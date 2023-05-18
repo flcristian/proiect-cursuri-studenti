@@ -18,6 +18,11 @@ namespace cursuri_studenti.admin.service
             this.ReadList();
         }
 
+        public AdminService(List<Admin> listAdmin)
+        {
+            _listAdmin = listAdmin;
+        }
+
         // Metode
 
         public void ReadList()
@@ -98,15 +103,27 @@ namespace cursuri_studenti.admin.service
             return id;
         }
 
-        public void RemoveById(int id)
+        public bool RemoveById(int id)
         {
-            _listAdmin.Remove(this.FindById(id));
+            Admin admin = this.FindById(id);
+            if (admin != null)
+            {
+                _listAdmin.Remove(admin);
+                return true;
+            }
+            return false;
         }
 
-        public void AddAdmin(Admin admin)
+        public bool AddAdmin(Admin admin)
         {
-            admin.Id = this.NewId();
-            _listAdmin.Add(admin);
+            Admin a = this.FindByEmail(admin.Email);
+            if (a == null)
+            {
+                admin.Id = this.NewId();
+                _listAdmin.Add(admin);
+                return true;
+            }
+            return false;
         }
 
         public int GetCount()
