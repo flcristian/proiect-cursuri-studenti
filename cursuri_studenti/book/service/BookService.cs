@@ -19,6 +19,11 @@ namespace cursuri_studenti.book.service
             this.ReadList();
         }
 
+        public BookService(List<Book> listBook)
+        {
+            _listBook = listBook;
+        }
+
         // Metode
 
         public void ReadList()
