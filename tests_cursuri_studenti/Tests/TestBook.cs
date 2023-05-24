@@ -1,6 +1,5 @@
 ﻿using cursuri_studenti.book.model;
 using cursuri_studenti.book.service;
-using cursuri_studenti.student.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -299,9 +298,9 @@ namespace tests_cursuri_studenti.Tests
         {
             // Arrange
             int Id1 = 12, Id2 = 101;
-            Book anBook = new Book(Id1, 111, "da2", "pa13231ss");
+            Book aBook = new Book(Id1, 111, "da2", "pa13231ss");
             Book anotherBook = new Book(Id2, 222, "fasf", "safas");
-            List<Book> list = new List<Book> { anBook, anotherBook };
+            List<Book> list = new List<Book> { aBook, anotherBook };
             BookService bookService = new BookService(list);
 
             // Act
@@ -314,12 +313,14 @@ namespace tests_cursuri_studenti.Tests
             Assert.InRange(newId, 1, 9999);
         }
 
+        // TODO: REMOVE, ADD, EDIT
+
         [Fact]
         public void GetCount_ReturnsActualCount()
         {
             // Arrange
-            Book anBook = new Book(123, 123, "authorName", "bookName");
-            List<Book> list = new List<Book> { anBook };
+            Book aBook = new Book(123, 123, "authorName", "bookName");
+            List<Book> list = new List<Book> { aBook };
             BookService bookService = new BookService(list);
 
             // Act
@@ -333,8 +334,8 @@ namespace tests_cursuri_studenti.Tests
         public void ClearList_ListRemainsEmpty()
         {
             // Arrange
-            Book anBook = new Book(123, 123, "authorName", "bookName");
-            List<Book> list = new List<Book> { anBook };
+            Book aBook = new Book(123, 123, "authorName", "bookName");
+            List<Book> list = new List<Book> { aBook };
             BookService bookService = new BookService(list);
 
             // Act
@@ -349,8 +350,8 @@ namespace tests_cursuri_studenti.Tests
         public void GetList_ReturnsActualList()
         {
             // Arrange
-            Book anBook = new Book(123, 123, "authorName", "bookName");
-            List<Book> expectedList = new List<Book> { anBook };
+            Book aBook = new Book(123, 123, "authorName", "bookName");
+            List<Book> expectedList = new List<Book> { aBook };
             BookService bookService = new BookService(expectedList);
 
             // Act
@@ -365,9 +366,9 @@ namespace tests_cursuri_studenti.Tests
         public void SetList_EditsList()
         {
             // Arrange
-            Book anBook = new Book(123, 123, "authorName", "bookName");
+            Book aBook = new Book(123, 123, "authorName", "bookName");
             List<Book> list = new List<Book>();
-            List<Book> setList = new List<Book> { anBook };
+            List<Book> setList = new List<Book> { aBook };
             BookService bookService = new BookService(list);
 
             // Act

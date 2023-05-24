@@ -78,36 +78,6 @@ namespace cursuri_studenti.enrolment.service
             return null;
         }
 
-        public List<Enrolment> FindByCourseId(int id)
-        {
-            List<Enrolment> enrolments = new List<Enrolment>();
-
-            foreach(Enrolment e in _listEnrolment)
-            {
-                if(e.CourseId == id)
-                {
-                    enrolments.Add(e);
-                }
-            }
-
-            return enrolments;
-        }
-        
-        public List<Enrolment> FindByStudentId(int id)
-        {
-            List<Enrolment> enrolments = new List<Enrolment>();
-
-            foreach(Enrolment e in _listEnrolment)
-            {
-                if(e.StudentId == id)
-                {
-                    enrolments.Add(e);
-                }
-            }
-
-            return enrolments;
-        }
-
         public Enrolment FindByStudentAndCourseId(int studentId, int courseId)
         {
             foreach (Enrolment e in _listEnrolment)
@@ -119,6 +89,36 @@ namespace cursuri_studenti.enrolment.service
             }
 
             return null;
+        }
+
+        public List<Enrolment> FindByCourseId(int id)
+        {
+            List<Enrolment> enrolments = new List<Enrolment>();
+
+            foreach (Enrolment e in _listEnrolment)
+            {
+                if (e.CourseId == id)
+                {
+                    enrolments.Add(e);
+                }
+            }
+
+            return enrolments;
+        }
+
+        public List<Enrolment> FindByStudentId(int id)
+        {
+            List<Enrolment> enrolments = new List<Enrolment>();
+
+            foreach (Enrolment e in _listEnrolment)
+            {
+                if (e.StudentId == id)
+                {
+                    enrolments.Add(e);
+                }
+            }
+
+            return enrolments;
         }
 
         public int NewId()

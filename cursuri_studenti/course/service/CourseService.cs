@@ -18,6 +18,11 @@ namespace cursuri_studenti.course.service
             this.ReadList();
         }
 
+        public CourseService(List<Course> listCourse)
+        {
+            _listCourse = listCourse;
+        }
+
         // Metode
 
         public void ReadList()

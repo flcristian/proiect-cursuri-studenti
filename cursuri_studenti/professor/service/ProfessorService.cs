@@ -10,12 +10,16 @@ namespace cursuri_studenti.professor.service
     public class ProfessorService
     {
         List<Professor> _listProfessor;
-        
         public ProfessorService()
         {
             _listProfessor = new List<Professor>();
 
             this.ReadList();
+        }
+
+        public ProfessorService(List<Professor> listProfessor)
+        {
+            _listProfessor = listProfessor;
         }
 
         // Metode
@@ -120,15 +124,26 @@ namespace cursuri_studenti.professor.service
             return id;
         }
 
-        public void RemoveById(int id)
+        public bool RemoveById(int id)
         {
-            _listProfessor.Remove(this.FindById(id));
+            Professor professor = this.FindById(id);
+            if(professor != null)
+            {
+                _listProfessor.Remove(this.FindById(id));
+                return true;
+            }
+            return false;
         }
 
-        public void AddProfessor(Professor professor)
+        public bool AddProfessor(Professor professor)
         {
-            professor.Id = this.NewId();
-            _listProfessor.Add(professor);
+            if (this.FindByEmail(professor.Email) == null)
+            {
+                professor.Id = this.NewId();
+                _listProfessor.Add(professor);
+                return true;
+            }
+            return false;
         }
 
         public int GetCount()

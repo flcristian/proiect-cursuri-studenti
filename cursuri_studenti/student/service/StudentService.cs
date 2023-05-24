@@ -19,6 +19,11 @@ namespace cursuri_studenti.student.service
             this.ReadList();
         }
 
+        public StudentService(List<Student> listStudent)
+        {
+            _listStudent = listStudent;
+        }
+
         // Metode
 
         public void ReadList()
@@ -71,11 +76,11 @@ namespace cursuri_studenti.student.service
             return null;
         }
 
-        public Student FindByEmail(string email)
+        public Student FindByName(string name)
         {
-            foreach(Student s in _listStudent)
+            foreach (Student s in _listStudent)
             {
-                if (s.Email.Equals(email))
+                if (s.Name.Equals(name))
                 {
                     return s;
                 }
@@ -84,11 +89,11 @@ namespace cursuri_studenti.student.service
             return null;
         }
 
-        public Student FindByName(string name)
+        public Student FindByEmail(string email)
         {
             foreach(Student s in _listStudent)
             {
-                if (s.Name.Equals(name))
+                if (s.Email.Equals(email))
                 {
                     return s;
                 }
@@ -121,15 +126,26 @@ namespace cursuri_studenti.student.service
             return id;
         }
 
-        public void RemoveById(int id)
+        public bool RemoveById(int id)
         {
-            _listStudent.Remove(this.FindById(id));
+            Student student = this.FindById(id);
+            if (student != null)
+            {
+                _listStudent.Remove(this.FindById(id));
+                return true;
+            }
+            return false;
         }
 
-        public void AddStudent(Student student)
+        public bool AddStudent(Student student)
         {
-            student.Id = this.NewId();
-            _listStudent.Add(student);
+            if(this.FindByEmail(student.Email) == null)
+            {
+                student.Id = this.NewId();
+                _listStudent.Add(student);
+                return true;
+            }
+            return false;
         }
 
         public bool IsBanned(int id)
