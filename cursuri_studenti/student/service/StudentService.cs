@@ -148,9 +148,18 @@ namespace cursuri_studenti.student.service
             return false;
         }
 
-        public bool IsBanned(int id)
+        public int IsBanned(int id)
         {
-            return this.FindById(id).Locked;
+            Student student = this.FindById(id);
+            if(student != null)
+            {
+                if (this.FindById(id).Locked)
+                {
+                    return 1;
+                }
+                return 0;
+            }
+            return -1;
         }
 
         public void Ban(int id)

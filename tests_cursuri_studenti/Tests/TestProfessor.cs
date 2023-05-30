@@ -245,9 +245,9 @@ namespace tests_cursuri_studenti.Tests
         {
             // Arrange
             int Id1 = 12, Id2 = 101;
-            Professor anProfessor = new Professor(Id1, "Professor Name", "email@mail.com", "pass");
+            Professor aProfessor = new Professor(Id1, "Professor Name", "email@mail.com", "pass");
             Professor anotherProfessor = new Professor(Id2, "just another professor", "testProfessor@email.xyz", "password");
-            List<Professor> list = new List<Professor> { anProfessor, anotherProfessor };
+            List<Professor> list = new List<Professor> { aProfessor, anotherProfessor };
             ProfessorService professorService = new ProfessorService(list);
 
             // Act
@@ -265,13 +265,13 @@ namespace tests_cursuri_studenti.Tests
         {
             // Arrange
             int Id = 12;
-            Professor anProfessor = new Professor(Id, "Professor Name", "email@mail.com", "pass");
-            List<Professor> list = new List<Professor> { anProfessor };
+            Professor aProfessor = new Professor(Id, "Professor Name", "email@mail.com", "pass");
+            List<Professor> list = new List<Professor> { aProfessor };
             ProfessorService professorService = new ProfessorService(list);
 
             // Act
             bool removed = professorService.RemoveById(Id);
-            list.Remove(anProfessor);
+            list.Remove(aProfessor);
 
             // Assert
             Assert.True(removed);
@@ -300,14 +300,14 @@ namespace tests_cursuri_studenti.Tests
         {
             // Arrange
             int Id = 12;
-            Professor anProfessor = new Professor(Id, "Professor Name", "email@mail.com", "pass");
+            Professor aProfessor = new Professor(Id, "Professor Name", "email@mail.com", "pass");
             Professor anotherProfessor = new Professor(101, "just another professor", "testProfessor@email.xyz", "password");
-            List<Professor> list = new List<Professor> { anProfessor, anotherProfessor };
+            List<Professor> list = new List<Professor> { aProfessor, anotherProfessor };
             ProfessorService professorService = new ProfessorService(list);
 
             // Act
             bool removed = professorService.RemoveById(Id);
-            list.Remove(anProfessor);
+            list.Remove(aProfessor);
 
             // Assert
             Assert.True(removed);
@@ -319,8 +319,8 @@ namespace tests_cursuri_studenti.Tests
         {
             // Arrange
             int Id = 281;
-            Professor anProfessor = new Professor(Id, "professor", "email@email.to", "passw");
-            List<Professor> list = new List<Professor> { anProfessor };
+            Professor aProfessor = new Professor(Id, "professor", "email@email.to", "passw");
+            List<Professor> list = new List<Professor> { aProfessor };
             ProfessorService professorService = new ProfessorService(list);
 
             // Act
@@ -339,8 +339,8 @@ namespace tests_cursuri_studenti.Tests
             // Arrange
             int Id = 281;
             string Email = "email@email.to";
-            Professor anProfessor = new Professor(Id, "professor", Email, "passw");
-            List<Professor> list = new List<Professor> { anProfessor };
+            Professor aProfessor = new Professor(Id, "professor", Email, "passw");
+            List<Professor> list = new List<Professor> { aProfessor };
             ProfessorService professorService = new ProfessorService(list);
 
             // Act
@@ -349,7 +349,7 @@ namespace tests_cursuri_studenti.Tests
 
             // Assert
             Assert.False(added);
-            Assert.Equal(anProfessor, professorService.FindByEmail(Email));
+            Assert.Equal(aProfessor, professorService.FindByEmail(Email));
             Assert.Equal(list, professorService.GetList());
             Assert.Equal(list.Count(), professorService.GetCount());
         }
@@ -358,8 +358,8 @@ namespace tests_cursuri_studenti.Tests
         public void GetCount_ReturnsActualCount()
         {
             // Arrange
-            Professor anProfessor = new Professor(123, "professor", "email@mail.com", "passw");
-            List<Professor> list = new List<Professor> { anProfessor };
+            Professor aProfessor = new Professor(123, "professor", "email@mail.com", "passw");
+            List<Professor> list = new List<Professor> { aProfessor };
             ProfessorService professorService = new ProfessorService(list);
 
             // Act
@@ -373,8 +373,8 @@ namespace tests_cursuri_studenti.Tests
         public void ClearList_ListRemainsEmpty()
         {
             // Arrange
-            Professor anProfessor = new Professor(123, "professor", "email@mail.com", "passw");
-            List<Professor> list = new List<Professor> { anProfessor };
+            Professor aProfessor = new Professor(123, "professor", "email@mail.com", "passw");
+            List<Professor> list = new List<Professor> { aProfessor };
             ProfessorService professorService = new ProfessorService(list);
 
             // Act
@@ -389,8 +389,8 @@ namespace tests_cursuri_studenti.Tests
         public void GetList_ReturnsActualList()
         {
             // Arrange
-            Professor anProfessor = new Professor(123, "professor", "email@mail.com", "passw");
-            List<Professor> expectedList = new List<Professor> { anProfessor };
+            Professor aProfessor = new Professor(123, "professor", "email@mail.com", "passw");
+            List<Professor> expectedList = new List<Professor> { aProfessor };
             ProfessorService professorService = new ProfessorService(expectedList);
 
             // Act
@@ -405,9 +405,9 @@ namespace tests_cursuri_studenti.Tests
         public void SetList_EditsList()
         {
             // Arrange
-            Professor anProfessor = new Professor(123, "professor", "email@mail.com", "passw");
+            Professor aProfessor = new Professor(123, "professor", "email@mail.com", "passw");
             List<Professor> list = new List<Professor>();
-            List<Professor> setList = new List<Professor> { anProfessor };
+            List<Professor> setList = new List<Professor> { aProfessor };
             ProfessorService professorService = new ProfessorService(list);
 
             // Act

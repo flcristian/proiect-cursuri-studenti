@@ -245,9 +245,9 @@ namespace tests_cursuri_studenti.Tests
         {
             // Arrange
             int Id1 = 12, Id2 = 101;
-            Student anStudent = new Student(Id1, 123, "Student Name", "email@mail.com", "pass");
+            Student aStudent = new Student(Id1, 123, "Student Name", "email@mail.com", "pass");
             Student anotherStudent = new Student(Id2, 123, "just another student", "testStudent@email.xyz", "password");
-            List<Student> list = new List<Student> { anStudent, anotherStudent };
+            List<Student> list = new List<Student> { aStudent, anotherStudent };
             StudentService studentService = new StudentService(list);
 
             // Act
@@ -265,13 +265,13 @@ namespace tests_cursuri_studenti.Tests
         {
             // Arrange
             int Id = 12;
-            Student anStudent = new Student(Id, 123, "Student Name", "email@mail.com", "pass");
-            List<Student> list = new List<Student> { anStudent };
+            Student aStudent = new Student(Id, 123, "Student Name", "email@mail.com", "pass");
+            List<Student> list = new List<Student> { aStudent };
             StudentService studentService = new StudentService(list);
 
             // Act
             bool removed = studentService.RemoveById(Id);
-            list.Remove(anStudent);
+            list.Remove(aStudent);
 
             // Assert
             Assert.True(removed);
@@ -300,14 +300,14 @@ namespace tests_cursuri_studenti.Tests
         {
             // Arrange
             int Id = 12;
-            Student anStudent = new Student(Id, 123, "Student Name", "email@mail.com", "pass");
+            Student aStudent = new Student(Id, 123, "Student Name", "email@mail.com", "pass");
             Student anotherStudent = new Student(101, 123, "just another student", "testStudent@email.xyz", "password");
-            List<Student> list = new List<Student> { anStudent, anotherStudent };
+            List<Student> list = new List<Student> { aStudent, anotherStudent };
             StudentService studentService = new StudentService(list);
 
             // Act
             bool removed = studentService.RemoveById(Id);
-            list.Remove(anStudent);
+            list.Remove(aStudent);
 
             // Assert
             Assert.True(removed);
@@ -319,8 +319,8 @@ namespace tests_cursuri_studenti.Tests
         {
             // Arrange
             int Id = 281;
-            Student anStudent = new Student(Id, 123, "student", "email@email.to", "passw");
-            List<Student> list = new List<Student> { anStudent };
+            Student aStudent = new Student(Id, 123, "student", "email@email.to", "passw");
+            List<Student> list = new List<Student> { aStudent };
             StudentService studentService = new StudentService(list);
 
             // Act
@@ -339,8 +339,8 @@ namespace tests_cursuri_studenti.Tests
             // Arrange
             int Id = 281;
             string Email = "email@email.to";
-            Student anStudent = new Student(Id, 123, "student", Email, "passw");
-            List<Student> list = new List<Student> { anStudent };
+            Student aStudent = new Student(Id, 123, "student", Email, "passw");
+            List<Student> list = new List<Student> { aStudent };
             StudentService studentService = new StudentService(list);
 
             // Act
@@ -349,19 +349,66 @@ namespace tests_cursuri_studenti.Tests
 
             // Assert
             Assert.False(added);
-            Assert.Equal(anStudent, studentService.FindByEmail(Email));
+            Assert.Equal(aStudent, studentService.FindByEmail(Email));
             Assert.Equal(list, studentService.GetList());
             Assert.Equal(list.Count(), studentService.GetCount());
         }
 
-        // TODO : BANNED STUFF
+        [Fact]
+        public void IsBanned_NotBanned_ReturnsNegative1()
+        {
+            // Arrange
+            int Id = 123;
+            List<Student> list = new List<Student> { };
+            StudentService studentService = new StudentService(list);
+
+            // Act
+            int banned = studentService.IsBanned(Id);
+
+            // Assert
+            Assert.Equal(-1, banned);
+        }
+
+        [Fact]
+        public void IsBanned_NotBanned_Returns0()
+        {
+            // Arrange
+            int Id = 123;
+            Student aStudent = new Student(Id, 123, "studentName", "ema@gm.co", "pasw1");
+            aStudent.Locked = false;
+            List<Student> list = new List<Student> { aStudent };
+            StudentService studentService = new StudentService(list);
+
+            // Act
+            int banned = studentService.IsBanned(Id);
+
+            // Assert
+            Assert.Equal(0, banned);
+        }
+
+        [Fact]
+        public void IsBanned_Banned_Returns1()
+        {
+            // Arrange
+            int Id = 123;
+            Student aStudent = new Student(Id, 123, "studentName", "ema@gm.co", "pasw1");
+            aStudent.Locked = true;
+            List<Student> list = new List<Student> { aStudent };
+            StudentService studentService = new StudentService(list);
+
+            // Act
+            int banned = studentService.IsBanned(Id);
+
+            // Assert
+            Assert.Equal(1, banned);
+        }
 
         [Fact]
         public void GetCount_ReturnsActualCount()
         {
             // Arrange
-            Student anStudent = new Student(123, 123, "student", "email@mail.com", "passw");
-            List<Student> list = new List<Student> { anStudent };
+            Student aStudent = new Student(123, 123, "student", "email@mail.com", "passw");
+            List<Student> list = new List<Student> { aStudent };
             StudentService studentService = new StudentService(list);
 
             // Act
@@ -375,8 +422,8 @@ namespace tests_cursuri_studenti.Tests
         public void ClearList_ListRemainsEmpty()
         {
             // Arrange
-            Student anStudent = new Student(123, 123, "student", "email@mail.com", "passw");
-            List<Student> list = new List<Student> { anStudent };
+            Student aStudent = new Student(123, 123, "student", "email@mail.com", "passw");
+            List<Student> list = new List<Student> { aStudent };
             StudentService studentService = new StudentService(list);
 
             // Act
@@ -391,8 +438,8 @@ namespace tests_cursuri_studenti.Tests
         public void GetList_ReturnsActualList()
         {
             // Arrange
-            Student anStudent = new Student(123, 123, "student", "email@mail.com", "passw");
-            List<Student> expectedList = new List<Student> { anStudent };
+            Student aStudent = new Student(123, 123, "student", "email@mail.com", "passw");
+            List<Student> expectedList = new List<Student> { aStudent };
             StudentService studentService = new StudentService(expectedList);
 
             // Act
@@ -407,9 +454,9 @@ namespace tests_cursuri_studenti.Tests
         public void SetList_EditsList()
         {
             // Arrange
-            Student anStudent = new Student(123, 123, "student", "email@mail.com", "passw");
+            Student aStudent = new Student(123, 123, "student", "email@mail.com", "passw");
             List<Student> list = new List<Student>();
-            List<Student> setList = new List<Student> { anStudent };
+            List<Student> setList = new List<Student> { aStudent };
             StudentService studentService = new StudentService(list);
 
             // Act

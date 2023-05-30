@@ -271,7 +271,7 @@ namespace cursuri_studenti.view
             Console.WriteLine();
 
             Student student = _studentService.FindByEmail(email);
-            if (_studentService.IsBanned(student.Id))
+            if (_studentService.IsBanned(student.Id) == 1)
             {
                 Console.WriteLine("Acestui student ii este deja interzis accesul!\n");
             }
@@ -290,7 +290,7 @@ namespace cursuri_studenti.view
             Console.WriteLine();
 
             Student student = _studentService.FindByEmail(email);
-            if (!_studentService.IsBanned(student.Id))
+            if (_studentService.IsBanned(student.Id) == 0)
             {
                 Console.WriteLine("Acestui student nu ii este interzis accesul!\n");
             }

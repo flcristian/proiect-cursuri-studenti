@@ -248,7 +248,7 @@ namespace tests_cursuri_studenti.Tests
             Assert.InRange(newId, 1, 9999);
         }
 
-        // TODO: REMOVE, ADD, COUNT ENROLED
+        // TODO: REMOVE, ADD
 
         [Fact]
         public void GetCount_ReturnsActualCount()
